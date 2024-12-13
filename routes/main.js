@@ -1,6 +1,5 @@
 const gen_quiz = require("./gen_quiz");
 const { generateToken, verifyToken } = require("../util/token");
-var fetch = require("node-fetch");
 const { len } = require("../util/validate");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;

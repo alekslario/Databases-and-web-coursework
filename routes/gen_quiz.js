@@ -1,6 +1,5 @@
 const { verifyToken } = require("../util/token");
 const { query } = require("../util/query");
-var fetch = require("node-fetch");
 module.exports = function (app, shopData, baseUrl) {
   const { GoogleGenerativeAI, SchemaType } = require("@google/generative-ai");
 
