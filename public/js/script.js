@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let debounceTimer;
 
+  const local = false;
+  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166";
+
   // Debounce the API call to wait until the user stops typing
   if (searchInput) {
     searchInput.addEventListener("input", () => {
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("API call triggered with query:", query);
 
     // Example API call
-    fetch(`/search?q=${encodeURIComponent(query)}`)
+    fetch(`${baseUrl}/search?q=${encodeURIComponent(query)}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("API response:", data);
@@ -101,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Quiz ID:", quizId);
 
         try {
-          const response = await fetch(`/quiz/${quizId}`);
+          const response = await fetch(`${baseUrl}/quiz/${quizId}`);
           if (!response.ok) {
             throw new Error("Failed to fetch quiz data");
           }
@@ -181,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const encodedFile = await encodeFileAsBase64(selectedFile);
       console.log("Encoded File:", encodedFile);
-      const response = await fetch("/gen_quiz", {
+      const response = await fetch(baseUrl + "/gen_quiz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
