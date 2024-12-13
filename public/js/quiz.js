@@ -7,12 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let answered = 0,
     currentQuestionIndex = 0;
 
-  const quizData =
-    JSON.parse(localStorage.getItem("quizData")) ||
+  let quizData =
+    localStorage.getItem("quizData") ||
     (() => {
       window.location.href = "/";
       return;
     })();
+
+  quizData = JSON.parse(quizData);
+
   const userAnswers = [];
 
   const updateProgress = () => {
@@ -39,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const renderQuestion = () => {
     const { question, options, answer } = quizData[currentQuestionIndex];
+
     const questionCard = document.querySelector(".question-card");
     questionCard.innerHTML = `<h2>${question}</h2><div class="options-container"></div>`;
     const optionsContainer = questionCard.querySelector(".options-container");

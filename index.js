@@ -25,7 +25,7 @@ global.db = db;
 
 // Create the express application object
 const app = express();
-const port = 8013;
+const port = 8000;
 app.use(express.json({ limit: "5mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "5mb" }));
 app.use(cookieParser());

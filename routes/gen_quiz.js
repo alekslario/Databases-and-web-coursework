@@ -109,13 +109,9 @@ module.exports = function (app, shopData, baseUrl) {
       //   "Create a multiple choice test based on information in the document. Each option should be roughly equal in length. Pdf: " +
       //     data
       // );
-      // console.log("Generated quiz:", result.response.text());
-      const result = {
-        response: {
-          text: () => stub,
-        },
-      };
-      return res.status(200).json(result.response.text());
+      // const text = result.response.text();
+      const text = stub;
+      return res.status(200).json({ text });
     } catch (error) {
       console.error("Error generating quiz:", error.message);
       res.status(500).send("Failed to generate quiz. Please try again.");

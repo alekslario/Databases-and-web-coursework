@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const quizData = JSON.parse(localStorage.getItem("quizData"));
-  const userAnswers = JSON.parse(localStorage.getItem("userAnswers"));
+  let quizData = localStorage.getItem("quizData");
+  quizData = JSON.parse(quizData);
+  let userAnswers = localStorage.getItem("userAnswers");
+  userAnswers = JSON.parse(userAnswers);
   const options = ["A", "B", "C", "D"];
   if (!quizData || !userAnswers) {
     alert("No quiz data found.");

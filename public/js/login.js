@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert(result.message || "Success!");
         // redirect to previous url
         console.log("document.referrer", document.referrer);
         if (document.referrer.includes("/login")) {
