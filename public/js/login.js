@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   // get div with class status
   const statusDiv = document.querySelector(".status");
-  const local = false;
-  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166";
+  const local = true;
+  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166/";
   // Update form title and button based on the toggle
   newUserToggle.addEventListener("change", () => {
     if (newUserToggle.checked) {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault(); // Prevent default form submission
     statusDiv.style.visibility = "hidden"; // Hide status message
     const formData = new FormData(loginForm);
-    const url = baseUrl + (newUserToggle.checked ? "/register" : "/login"); // Decide endpoint based on toggle
+    const url = baseUrl + (newUserToggle.checked ? "register" : "login"); // Decide endpoint based on toggle
 
     try {
       const response = await fetch(url, {

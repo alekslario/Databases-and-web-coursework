@@ -7,51 +7,51 @@ module.exports = function (app, shopData, baseUrl) {
     process.env.GOOGLE_GENERATIVE_AI_API_KEY
   );
 
-  let stub = [
-    {
-      answer: "A",
-      options: [
-        "The document primarily focuses on the benefits of machine learning.",
-        "The document is an advertisement for IBM products and services.",
-        "The document is a technical manual for machine learning algorithms.",
-        "The document contains links to various resources related to machine learning, but doesn't focus on any one aspect in particular",
-      ],
-      question: "What is the main subject or purpose of the provided document?",
-    },
-    {
-      answer: "C",
-      options: [
-        "The links primarily focus on IBM's machine learning.",
-        "The links primarily focus on various types of neural networks.",
-        "The links are a mixture of resources from IBM and other sources, relating to machine learning.",
-        "The links are all from journals and peer-reviewed publications on machine learning",
-      ],
-      question:
-        "What can be said about the nature of the links included in the document?",
-    },
-    {
-      answer: "B",
-      options: [
-        "The document does not contain any questions.",
-        "The document contains multiple links to online resources on a range of machine learning topics.",
-        "The document provides a detailed technical explanation of one particular machine learning technique.",
-        "The document is a simple, non-technical overview of machine learning suitable for beginners",
-      ],
-      question:
-        "Which of the following best describes the content and style of the document?",
-    },
-    {
-      answer: "D",
-      options: [
-        "There is one link in the document, to a single machine learning resource.",
-        "There are 2-5 links related to one subtopic of machine learning.",
-        "There are several links to resources on specific machine learning algorithms and applications.",
-        "There are numerous links to various resources about machine learning, covering a broad range of topics",
-      ],
-      question:
-        "How many links to resources about machine learning are present in the document, and how are the topics covered?",
-    },
-  ];
+  // let stub = [
+  //   {
+  //     answer: "A",
+  //     options: [
+  //       "The document primarily focuses on the benefits of machine learning.",
+  //       "The document is an advertisement for IBM products and services.",
+  //       "The document is a technical manual for machine learning algorithms.",
+  //       "The document contains links to various resources related to machine learning, but doesn't focus on any one aspect in particular",
+  //     ],
+  //     question: "What is the main subject or purpose of the provided document?",
+  //   },
+  //   {
+  //     answer: "C",
+  //     options: [
+  //       "The links primarily focus on IBM's machine learning.",
+  //       "The links primarily focus on various types of neural networks.",
+  //       "The links are a mixture of resources from IBM and other sources, relating to machine learning.",
+  //       "The links are all from journals and peer-reviewed publications on machine learning",
+  //     ],
+  //     question:
+  //       "What can be said about the nature of the links included in the document?",
+  //   },
+  //   {
+  //     answer: "B",
+  //     options: [
+  //       "The document does not contain any questions.",
+  //       "The document contains multiple links to online resources on a range of machine learning topics.",
+  //       "The document provides a detailed technical explanation of one particular machine learning technique.",
+  //       "The document is a simple, non-technical overview of machine learning suitable for beginners",
+  //     ],
+  //     question:
+  //       "Which of the following best describes the content and style of the document?",
+  //   },
+  //   {
+  //     answer: "D",
+  //     options: [
+  //       "There is one link in the document, to a single machine learning resource.",
+  //       "There are 2-5 links related to one subtopic of machine learning.",
+  //       "There are several links to resources on specific machine learning algorithms and applications.",
+  //       "There are numerous links to various resources about machine learning, covering a broad range of topics",
+  //     ],
+  //     question:
+  //       "How many links to resources about machine learning are present in the document, and how are the topics covered?",
+  //   },
+  // ];
   const questionSchema = {
     type: SchemaType.OBJECT,
     properties: {
@@ -98,19 +98,20 @@ module.exports = function (app, shopData, baseUrl) {
         return res.status(400).send("No data provided.");
       }
 
-      // const model = genAI.getGenerativeModel({
-      //   model: "gemini-1.5-flash",
-      //   generationConfig: {
-      //     responseMimeType: "application/json",
-      //     responseSchema: schema,
-      //   },
-      // });
-      // const result = await model.generateContent(
-      //   "Create a multiple choice test based on information in the document. Each option should be roughly equal in length. Pdf: " +
-      //     data
-      // );
-      // const text = result.response.text();
-      const text = stub;
+      const model = genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: schema,
+        },
+      });
+      const result = await model.generateContent(
+        "Create a multiple choice test based on topics discussed in the pdf. It is exam prep. Each option should be roughly equal in length. (base64) Pdf: " +
+          data
+      );
+      const textString = result.response.text();
+      // const text = stub;
+      const text = JSON.parse(textString);
       return res.status(200).json({ text });
     } catch (error) {
       console.error("Error generating quiz:", error.message);
