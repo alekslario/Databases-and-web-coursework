@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let userAnswers = localStorage.getItem("userAnswers");
   userAnswers = JSON.parse(userAnswers);
   const options = ["A", "B", "C", "D"];
-  const local = true;
-  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166/";
+  const local = false;
+  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166";
+
   if (!quizData || !userAnswers) {
     alert("No quiz data found.");
     return;
