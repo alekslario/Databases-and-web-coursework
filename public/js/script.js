@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("quizData", JSON.stringify(questions));
 
           // Redirect to the quiz page
-          window.location.href = "/quiz";
+          window.location.href = baseUrl + "/quiz";
         } catch (error) {
           console.error(error);
           alert("An error occurred while fetching the quiz data.");
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("quizData", JSON.stringify(quizData.text));
       progressBarFill.style.width = "100%";
       status.textContent = "Quiz generated successfully!";
-      window.location.href = "/quiz";
+      window.location.href = baseUrl + "/quiz";
     } catch (error) {
       status.textContent = "Failed to process the file.";
       console.error(error);

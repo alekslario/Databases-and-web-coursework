@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // redirect to previous url
         console.log("document.referrer", document.referrer);
         if (document.referrer.includes("/login")) {
-          window.location.href = "/";
+          window.location.href = baseUrl;
         } else {
-          window.location.href = document.referrer || "/";
+          window.location.href = document.referrer || baseUrl;
         }
       } else {
         // update status message /  div -> get div with class status

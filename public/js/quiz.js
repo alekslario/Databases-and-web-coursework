@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("next-btn");
   let answered = 0,
     currentQuestionIndex = 0;
+  const local = false;
+  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166";
 
   let quizData =
     localStorage.getItem("quizData") ||
     (() => {
-      window.location.href = "/";
+      window.location.href = baseUrl;
       return;
     })();
 
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Submit quiz
       // save userAnswers to localStorage
       localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
-      window.location.href = "/save_quiz";
+      window.location.href = baseUrl + "/save_quiz";
     }
   });
 
