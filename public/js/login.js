@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // get div with class status
   const statusDiv = document.querySelector(".status");
   const local = false;
-  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166/";
+  const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166";
   // Update form title and button based on the toggle
   newUserToggle.addEventListener("change", () => {
     if (newUserToggle.checked) {
