@@ -1,6 +1,5 @@
 // Import the modules we need
 var express = require("express");
-var fetch = require("node-fetch");
 const session = require("express-session");
 var ejs = require("ejs");
 var bodyParser = require("body-parser");
@@ -24,7 +23,6 @@ db.connect((err) => {
   console.log("Connected to database");
 });
 global.db = db;
-global.fetch = fetch;
 
 // Create the express application object
 const app = express();

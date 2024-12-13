@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const encodedFile = await encodeFileAsBase64(selectedFile);
-      console.log("Encoded File:", encodedFile);
+
       const response = await fetch(baseUrl + "/gen_quiz", {
         method: "POST",
         headers: {
