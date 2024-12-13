@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login or Register</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .form-container {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      h1 {
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        color: #333;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #555;
+      }
+
+      form input {
+        width: 100%;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 1rem;
+        padding: 1rem 1rem 1rem 0;
+      }
+
+      .toggle-container input {
+        margin: 0 0.5rem 0 0;
+        width: fit-content;
+      }
+
+      .toggle-container label {
+        margin: 0;
+      }
+
+      form button {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+
+      form button:hover {
+        background-color: #0056b3;
+      }
+      .status {
+        visibility: hidden;
+        color: red;
+        padding: 5px 5px 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('base/nav') %>
+    <div class="form-container">
+      <h1 id="form-title">Login</h1>
+      <form id="loginForm" action="/login_callback" method="POST">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Enter your username"
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Enter your password"
+        />
+        <div class="status">Placeholder</div>
+        <div class="toggle-container">
+          <input type="checkbox" id="newUserToggle" />
+          <label for="newUserToggle">I am a new user</label>
+        </div>
+
+        <button type="submit" id="formButton">Login</button>
+      </form>
+    </div>
+
+    <script src="js/login.js"></script>
+    <%- include('base/footer') %>
+  </body>
+</html>

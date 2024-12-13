@@ -1,0 +1,90 @@
+/* Navigation bar styling */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+nav {
+  background-color: #007bff; /* Blue background */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 60px;
+  width: 100vw;
+}
+
+.nav-links {
+  list-style: none; /* Remove default bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff; /* White text */
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #d4e1ff; /* Lighter blue on hover */
+}
+
+#loginButton {
+  background-color: #ffffff; /* White button */
+  color: #007bff; /* Blue text */
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#loginButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+footer {
+  background-color: #343a40; /* Dark background */
+  color: #ffffff; /* Light text */
+  padding: 20px 0; /* Spacing for better visual balance */
+  font-size: 0.9rem;
+  margin-top: 60px;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.about {
+  max-width: 600px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

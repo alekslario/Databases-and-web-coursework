@@ -1,0 +1,12 @@
+<nav>
+  <ul class="nav-links">
+    <li><a href="/">Generate Quiz</a></li>
+    <li><a href="/about">About</a></li>
+
+    <% if (user) { %>
+    <li><a href="/login">Logout</a></li>
+    <% } else { %>
+    <li><a href="/login">Login</a></li>
+    <% } %>
+  </ul>
+</nav>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #f9f9f9;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .btn:hover {
+        background: #e6e6e6;
+      }
+
+      .btn.correct {
+        background: #dff0d8;
+        border-color: #d6e9c6;
+        color: #3c763d;
+      }
+
+      .btn.incorrect {
+        background: #f2dede;
+        border-color: #ebccd1;
+        color: #a94442;
+      }
+
+      .btn.correct::after {
+        content: " ✓";
+      }
+
+      .btn.incorrect::after {
+        content: " ✗";
+      }
+
+      .progress-bar {
+        height: 10px;
+        background: #007bff;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        transition: width 0.3s;
+      }
+
+      button:disabled {
+        background: #e6e6e6;
+        cursor: not-allowed;
+      }
+
+      .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .answered-count-parent {
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        padding-bottom: 15px;
+      }
+      #answered-count {
+        display: flex;
+        width: fit-content;
+        font-size: 16px;
+        font-weight: normal;
+        color: #878787;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('base/nav') %>
+    <div class="container">
+      <h1>Quiz</h1>
+      <div class="answered-count-parent">
+        <div id="answered-count">0/4</div>
+      </div>
+      <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+      <div id="quiz-container">
+        <div class="question-card"></div>
+      </div>
+      <div class="navigation-buttons">
+        <button id="prev-btn" class="btn" disabled>Previous</button>
+        <button id="next-btn" class="btn">Next</button>
+      </div>
+    </div>
+    <script src="js/quiz.js"></script>
+    <%- include('base/footer') %>
+  </body>
+</html>
