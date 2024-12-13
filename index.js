@@ -6,8 +6,8 @@ var bodyParser = require("body-parser");
 var mysql = require("mysql2");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-const local = true;
-const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/454/";
+const local = false;
+const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166/";
 
 const db = mysql.createConnection({
   host: "localhost",

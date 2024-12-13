@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       // update status message /  div -> get div with class status
       console.log("error", error);
-      statusDiv.textContent = "test";
+      statusDiv.textContent = "Error";
       // set visibility
       statusDiv.style.visibility = "visible";
     }
