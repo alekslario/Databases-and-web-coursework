@@ -119,10 +119,12 @@ module.exports = function (app, shopData, baseUrl) {
           },
         }),
       });
-
-      const textString = response.text();
+      console.log("response", response);
+      const textString = await response.text();
       // const text = stub;
+      console.log("textString", textString);
       const text = JSON.parse(textString);
+      console.log("text", text);
       return res.status(200).json({ text });
     } catch (error) {
       console.error("Error generating quiz:", error.message);
