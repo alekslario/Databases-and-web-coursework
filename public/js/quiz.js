@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     })();
 
+  // don't ask me why I have to parse it twice
+  quizData = JSON.parse(quizData);
   quizData = JSON.parse(quizData);
 
   const userAnswers = [];

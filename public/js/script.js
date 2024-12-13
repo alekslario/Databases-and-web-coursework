@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       // Store quiz data
       const quizData = await response.json();
-      console.log("Quiz Data:", quizData.text);
+
       localStorage.setItem("quizData", JSON.stringify(quizData.text));
       progressBarFill.style.width = "100%";
       status.textContent = "Quiz generated successfully!";
