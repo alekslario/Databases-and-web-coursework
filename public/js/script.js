@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // accpeting empty query as well - defaults to all quizzes
     console.log("API call triggered with query:", query);
 
-    // Example API call
     fetch(`${baseUrl}/search?q=${encodeURIComponent(query)}`)
       .then((response) => response.json())
       .then((data) => {
