@@ -51,16 +51,16 @@ module.exports = function (app, shopData, baseUrl) {
   //   },
   // ];
   const questionSchema = {
-    type: SchemaType.OBJECT,
+    type: "OBJECT",
     properties: {
       question: {
-        type: SchemaType.STRING,
+        type: "STRING",
         description: "The question being asked.",
       },
       options: {
-        type: SchemaType.ARRAY,
+        type: "ARRAY",
         items: {
-          type: SchemaType.STRING,
+          type: "STRING",
           description: "An answer option for the question.",
         },
         minItems: 4,
@@ -69,7 +69,7 @@ module.exports = function (app, shopData, baseUrl) {
           "Four possible answers to the question. Only one should be correct, and they should all be of equal lengths.",
       },
       answer: {
-        type: SchemaType.STRING,
+        type: "STRING",
         description: "The correct answer. Valid values are 'A', 'B', 'C', 'D'.",
         enum: ["A", "B", "C", "D"],
       },
@@ -79,7 +79,7 @@ module.exports = function (app, shopData, baseUrl) {
   };
 
   const schema = {
-    type: SchemaType.ARRAY,
+    type: "ARRAY",
     items: questionSchema,
     minItems: 4,
     maxItems: 4,
