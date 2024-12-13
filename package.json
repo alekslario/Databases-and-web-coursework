@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ai-sdk/google": "^1.0.4",
-    "ai": "^4.0.6",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
@@ -24,7 +22,7 @@
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.7.0",
     "pm2": "^5.4.3",
     "zod": "^3.23.8"
   }
