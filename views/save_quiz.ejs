@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Quiz</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      /* Option styling */
+      .options-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .option {
+        position: relative;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .correct {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+      }
+
+      .incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+      }
+
+      /* Indicator styling */
+      .indicator {
+        margin-left: 10px;
+        font-weight: bold;
+      }
+
+      .checkmark {
+        color: #28a745;
+      }
+
+      .cross {
+        color: #dc3545;
+      }
+      #save-quiz {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      #quiz-title {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        outline: none;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+      #quiz-title-label {
+        text-align: center;
+        display: flex;
+        justify-self: center;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('base/nav') %>
+    <header>
+      <h1>Review and Save Your Quiz</h1>
+    </header>
+
+    <div class="container">
+      <form action="/save_quiz" method="POST">
+        <!-- Placeholder for dynamically populated quiz review -->
+        <div class="quiz-review"></div>
+        <!-- Input for the quiz title -->
+        <label for="quiz-title" id="quiz-title-label">Quiz Title:</label>
+        <input
+          type="text"
+          id="quiz-title"
+          name="title"
+          required
+          placeholder="Enter a title for your quiz"
+          required
+        />
+
+        <!-- Submit button -->
+        <button type="submit" id="save-quiz">Save Quiz</button>
+      </form>
+    </div>
+    <script src="js/save_quiz.js"></script>
+    <%- include('base/footer') %>
+  </body>
+</html>

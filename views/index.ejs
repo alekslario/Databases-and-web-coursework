@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Quiz Generator</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <%- include('base/nav') %>
+    <div class="wrapper">
+      <% if (quizzes && quizzes.length > 0) { %>
+      <button class="popup-btn" id="recentQuizzesBtn">Recent Quizzes</button>
+
+      <div class="modal hidden" id="quizModal">
+        <div class="modal-content">
+          <span class="close-btn" id="closeModal">&times;</span>
+          <div class="search-bar-container">
+            <form id="searchForm">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Type to search..."
+                autocomplete="off"
+              />
+              <button type="submit" id="searchButton">🔍</button>
+            </form>
+          </div>
+          <h2>Recent Quizzes</h2>
+          <ul class="quiz-list">
+            <% quizzes.forEach(quiz => { %>
+            <li class="quiz-item">
+              <button
+                class="quiz-title-btn quiz-btn"
+                data-quiz-id="<%= quiz.quiz_id %>"
+              >
+                <%= quiz.title %>
+              </button>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+      <% } else { %> <% } %>
+      <div class="card">
+        <h1>PDF Quiz Generator</h1>
+        <p>Upload a PDF to generate an interactive quiz!</p>
+        <div class="drop-zone" id="dropZone">
+          Drag and drop a PDF here or click to upload.
+        </div>
+        <input
+          type="file"
+          id="fileInput"
+          accept="application/pdf"
+          style="display: none"
+        />
+        <button id="generateBtn" disabled>Generate Quiz</button>
+        <div class="progress-bar" id="progressBar" style="display: none">
+          <div style="width: 0%"></div>
+        </div>
+        <p id="status" style="margin-top: 10px"></p>
+      </div>
+    </div>
+    <%- include('base/footer') %>
+    <script src="js/script.js"></script>
+  </body>
+</html>
