@@ -1,12 +1,10 @@
 const { verifyToken } = require("../util/token");
 const { query } = require("../util/query");
+const fetch = require("node-fetch");
+
+const GOOGLE_API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
 module.exports = function (app, shopData, baseUrl) {
-  const { GoogleGenerativeAI, SchemaType } = require("@google/generative-ai");
-
-  const genAI = new GoogleGenerativeAI(
-    process.env.GOOGLE_GENERATIVE_AI_API_KEY
-  );
-
   // let stub = [
   //   {
   //     answer: "A",
@@ -98,18 +96,31 @@ module.exports = function (app, shopData, baseUrl) {
         return res.status(400).send("No data provided.");
       }
 
-      const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash",
-        generationConfig: {
-          responseMimeType: "application/json",
-          responseSchema: schema,
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GOOGLE_API_KEY}`;
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: `Create a multiple choice test based on topics discussed in the pdf. It is exam prep. Each option should be roughly equal in length. (base64) Pdf: ${data}`,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            response_mime_type: "application/json",
+            response_schema: schema, // Use your predefined schema here
+          },
+        }),
       });
-      const result = await model.generateContent(
-        "Create a multiple choice test based on topics discussed in the pdf. It is exam prep. Each option should be roughly equal in length. (base64) Pdf: " +
-          data
-      );
-      const textString = result.response.text();
+
+      const textString = response.text();
       // const text = stub;
       const text = JSON.parse(textString);
       return res.status(200).json({ text });
