@@ -123,7 +123,8 @@ module.exports = function (app, shopData, baseUrl) {
       const textString = await response.text();
       // const text = stub;
       console.log("textString", textString);
-      const text = JSON.parse(textString);
+      const r_data = JSON.parse(textString);
+      const text = r_data.candidates[0].content.parts[0].text;
       console.log("text", text);
       return res.status(200).json({ text });
     } catch (error) {
