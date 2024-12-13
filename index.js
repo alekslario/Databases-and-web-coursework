@@ -8,7 +8,7 @@ var cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const local = false;
-const baseUrl = local ? "/" : "https://www.doc.gold.ac.uk/usr/166/";
+const baseUrl = local ? "" : "https://www.doc.gold.ac.uk/usr/166";
 
 const db = mysql.createConnection({
   host: "localhost",

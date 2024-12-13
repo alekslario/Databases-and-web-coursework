@@ -119,13 +119,13 @@ module.exports = function (app, shopData, baseUrl) {
           },
         }),
       });
-      console.log("response", response);
+
       const textString = await response.text();
       // const text = stub;
-      console.log("textString", textString);
+
       const r_data = JSON.parse(textString);
       const text = r_data.candidates[0].content.parts[0].text;
-      console.log("text", text);
+
       return res.status(200).json({ text });
     } catch (error) {
       console.error("Error generating quiz:", error.message);
@@ -138,7 +138,7 @@ module.exports = function (app, shopData, baseUrl) {
     const userId = verifyToken(req);
     // we got quiz id but not token
     if (!userId) {
-      return res.redirect("/login");
+      return res.redirect(baseUrl + "/login");
     }
 
     if (!query) {
@@ -188,13 +188,13 @@ module.exports = function (app, shopData, baseUrl) {
     if (!quizId) {
       //render default quiz page
       // everything else is handled by the frontend
-      return res.redirect("quiz");
+      return res.redirect(baseUrl + "/quiz");
     }
 
     const userId = verifyToken(req);
     // we got quiz id but not token
     if (!userId) {
-      return res.redirect("/login");
+      return res.redirect(baseUrl + "/login");
     }
 
     try {
@@ -210,7 +210,7 @@ module.exports = function (app, shopData, baseUrl) {
 
       if (quizData.length === 0) {
         // If no quiz data, redirect to default quiz page
-        return res.redirect("quiz");
+        return res.redirect(baseUrl + "/quiz");
       }
 
       const quizTitle = quizData[0].quiz_name;
@@ -275,11 +275,11 @@ module.exports = function (app, shopData, baseUrl) {
     const { quizData, userAnswers } = JSON.parse(data[0]);
 
     if (!quizData || !userAnswers) {
-      return res.redirect("/login");
+      return res.redirect(baseUrl + "/login");
     }
     const userId = verifyToken(req);
     if (!userId) {
-      return res.redirect("/login");
+      return res.redirect(baseUrl + "/login");
     }
 
     // query to check if the user exists
@@ -290,7 +290,7 @@ module.exports = function (app, shopData, baseUrl) {
       ]);
       if (userResult.length === 0) {
         res.clearCookie("userToken");
-        return res.redirect("/login");
+        return res.redirect(baseUrl + "/login");
       }
 
       // Insert the quiz
